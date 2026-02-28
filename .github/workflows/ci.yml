@@ -16,15 +16,12 @@ jobs:
           submodules: recursive
 
       - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y cmake build-essential
+        run: sudo apt-get update && sudo apt-get install -y build-essential
 
       - name: Install V
         uses: vlang/setup-v@v1
         with:
           check-latest: true
-
-      - name: Build lexbor
-        run: make setup
 
       - name: Run tests
         run: make test

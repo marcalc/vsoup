@@ -5,14 +5,6 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 LEXBOR_DIR="$SCRIPT_DIR/lexbor"
 LEXBOR_TAG="v2.6.0"
 
-# Check prerequisites
-for cmd in cmake make cc; do
-    if ! command -v "$cmd" &>/dev/null; then
-        echo "Error: '$cmd' is required but not found. Please install it first."
-        exit 1
-    fi
-done
-
 # Get lexbor source if needed
 if [ ! -f "$LEXBOR_DIR/CMakeLists.txt" ]; then
     if [ -f "$SCRIPT_DIR/.gitmodules" ]; then
@@ -30,18 +22,7 @@ if [ ! -f "$LEXBOR_DIR/CMakeLists.txt" ]; then
     exit 1
 fi
 
-cd "$LEXBOR_DIR"
-LEXBOR_VERSION=$(git describe --tags 2>/dev/null || echo "unknown")
-echo "Building lexbor ${LEXBOR_VERSION} static library..."
+echo "Lexbor ${LEXBOR_TAG} source ready at $LEXBOR_DIR"
 
-mkdir -p build
-cd build
-cmake .. -DLEXBOR_BUILD_SHARED=OFF -DLEXBOR_BUILD_STATIC=ON -DCMAKE_C_FLAGS="-fPIC"
-make -j$(sysctl -n hw.ncpu 2>/dev/null || nproc 2>/dev/null || echo 4)
-
-if [ -f "liblexbor_static.a" ]; then
-    echo "Success: liblexbor_static.a built at $LEXBOR_DIR/build/liblexbor_static.a"
-else
-    echo "Error: liblexbor_static.a not found after build"
-    exit 1
-fi
+# Generate per-module unity build files from lexbor source tree
+bash "$SCRIPT_DIR/generate_unity.sh"
