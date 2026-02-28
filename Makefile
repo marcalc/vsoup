@@ -6,7 +6,7 @@ setup:
 
 # Run all tests
 test:
-	v test .
+	v test *_test.v
 
 # Run all benchmarks
 bench: bench-selectors bench-parse
