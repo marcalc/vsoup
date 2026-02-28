@@ -7,13 +7,13 @@ module vsoup
 #flag -I @VMODROOT
 #flag -I @VMODROOT/lexbor/source
 #flag linux -lm
-#flag @VMODROOT/lexbor_core.c
-#flag @VMODROOT/lexbor_dom.c
-#flag @VMODROOT/lexbor_html.c
+#flag @VMODROOT/lexbor/lexbor_core.c
+#flag @VMODROOT/lexbor/lexbor_dom.c
+#flag @VMODROOT/lexbor/lexbor_html.c
 #flag @VMODROOT/lexbor/source/lexbor/html/interface.c
-#flag @VMODROOT/lexbor_css.c
+#flag @VMODROOT/lexbor/lexbor_css.c
 #flag @VMODROOT/lexbor/source/lexbor/css/value.c
-#flag @VMODROOT/lexbor_extra.c
+#flag @VMODROOT/lexbor/lexbor_extra.c
 #flag @VMODROOT/c_shims.c
 
 // Include the main lexbor headers

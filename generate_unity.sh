@@ -91,7 +91,7 @@ echo "Generating lexbor unity build files from $LEXBOR_SOURCE ..."
 
 # ── core (+ platform ports) ──
 
-OUT="$SCRIPT_DIR/lexbor_core.c"
+OUT="$SCRIPT_DIR/lexbor/lexbor_core.c"
 write_header "$OUT" "core"
 cat >> "$OUT" <<'EOF'
 
@@ -120,7 +120,7 @@ echo "  Generated $OUT"
 
 # ── dom ──
 
-OUT="$SCRIPT_DIR/lexbor_dom.c"
+OUT="$SCRIPT_DIR/lexbor/lexbor_dom.c"
 write_header "$OUT" "dom"
 echo "" >> "$OUT"
 write_includes "$OUT" dom
@@ -128,7 +128,7 @@ echo "  Generated $OUT"
 
 # ── html (interface.c excluded → separate TU) ──
 
-OUT="$SCRIPT_DIR/lexbor_html.c"
+OUT="$SCRIPT_DIR/lexbor/lexbor_html.c"
 write_header "$OUT" "html"
 echo "" >> "$OUT"
 write_includes "$OUT" html
@@ -136,7 +136,7 @@ echo "  Generated $OUT"
 
 # ── css (value.c excluded → separate TU) ──
 
-OUT="$SCRIPT_DIR/lexbor_css.c"
+OUT="$SCRIPT_DIR/lexbor/lexbor_css.c"
 write_header "$OUT" "css"
 echo "" >> "$OUT"
 write_includes "$OUT" css
@@ -144,7 +144,7 @@ echo "  Generated $OUT"
 
 # ── extra (all remaining modules) ──
 
-OUT="$SCRIPT_DIR/lexbor_extra.c"
+OUT="$SCRIPT_DIR/lexbor/lexbor_extra.c"
 write_header "$OUT" "ns tag selectors encoding engine style punycode unicode url utils"
 echo "" >> "$OUT"
 write_includes "$OUT" ns tag selectors encoding engine style punycode unicode url utils
