@@ -1,9 +1,19 @@
 module vsoup
 
-// Compiler flags for lexbor static library
+// Compile lexbor directly — no CMake required.
+// Per-module unity builds (lexbor_*.c) + two files compiled separately
+// to avoid static symbol conflicts across translation units.
+#flag -DLEXBOR_STATIC
 #flag -I @VMODROOT
 #flag -I @VMODROOT/lexbor/source
-#flag @VMODROOT/lexbor/build/liblexbor_static.a
+#flag linux -lm
+#flag @VMODROOT/lexbor_core.c
+#flag @VMODROOT/lexbor_dom.c
+#flag @VMODROOT/lexbor_html.c
+#flag @VMODROOT/lexbor/source/lexbor/html/interface.c
+#flag @VMODROOT/lexbor_css.c
+#flag @VMODROOT/lexbor/source/lexbor/css/value.c
+#flag @VMODROOT/lexbor_extra.c
 #flag @VMODROOT/c_shims.c
 
 // Include the main lexbor headers

@@ -48,16 +48,24 @@ cd ~/.vmodules/$USER/vsoup
 bash setup.sh
 ```
 
-The setup script will automatically clone [Lexbor](https://lexbor.com) v2.6.0 and build it as a static library. This only needs to be done once.
-
-**Prerequisites:** C compiler (cc/gcc/clang) and CMake.
+The setup script fetches the [Lexbor](https://lexbor.com) v2.6.0 source and generates the unity build files. V compiles lexbor directly — no CMake or separate build step required.
 
 ### From source
 
 ```sh
 git clone --recurse-submodules https://github.com/marcalc/vsoup.git
 cd vsoup
-make setup
+make test
+```
+
+The `lexbor_*.c` unity build files are committed to the repo, so from-source users can build immediately after cloning.
+
+### Updating lexbor
+
+After updating the lexbor submodule, regenerate the unity build files:
+
+```sh
+make generate
 ```
 
 ## API Reference
@@ -219,6 +227,7 @@ defer { doc2.free() }
 ```
 vsoup
 ├── bindings.v      # C FFI declarations (lexbor)
+├── lexbor_*.c      # Per-module unity builds — V compiles lexbor directly
 ├── helpers.v       # C↔V conversion, serialization, selector cache
 ├── vsoup.v         # parse(), parse_file(), connect()
 ├── document.v      # Document struct
