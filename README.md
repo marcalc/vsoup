@@ -40,25 +40,22 @@ println(doc.html())
 
 ## Installation
 
+```sh
+v install marcalc.vsoup
+```
+
 ### Prerequisites
 
 - [V compiler](https://vlang.io)
 - C compiler (cc/gcc/clang)
 - CMake
 
-### Setup
+### Building from source
 
 ```sh
 git clone --recurse-submodules https://github.com/marcalc/vsoup.git
 cd vsoup
-bash setup.sh  # builds lexbor static library
-```
-
-### As a V module
-
-```sh
-# Symlink into V modules
-ln -sf /path/to/vsoup ~/.vmodules/vsoup
+make setup  # builds lexbor static library
 ```
 
 ## API Reference
