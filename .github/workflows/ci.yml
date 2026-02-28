@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y cmake build-essential
+
+      - name: Install V
+        uses: vlang/setup-v@v1
+        with:
+          check-latest: true
+
+      - name: Build lexbor
+        run: make setup
+
+      - name: Run tests
+        run: make test
