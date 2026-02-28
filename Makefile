@@ -1,10 +1,6 @@
-.PHONY: setup generate test bench bench-selectors bench-parse bench-jsoup example clean install
+.PHONY: generate test bench bench-selectors bench-parse bench-jsoup example install
 
-# Fetch lexbor source and generate unity build files
-setup:
-	bash setup.sh
-
-# Regenerate unity build files from lexbor source tree
+# Regenerate unity build files from vendored lexbor source tree
 generate:
 	bash generate_unity.sh
 
@@ -30,10 +26,6 @@ bench-jsoup:
 # Run the basic example
 example:
 	v -path "$(CURDIR)/..|@vlib|@vmodules" run examples/basic.v
-
-# Clean build artifacts
-clean:
-	rm -rf lexbor/build
 
 # Symlink into V modules
 install:

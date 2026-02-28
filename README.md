@@ -44,29 +44,17 @@ println(doc.html())
 
 ```sh
 v install marcalc.vsoup
-cd ~/.vmodules/$USER/vsoup
-bash setup.sh
 ```
-
-The setup script fetches the [Lexbor](https://lexbor.com) v2.6.0 source and generates the unity build files. V compiles lexbor directly — no CMake or separate build step required.
 
 ### From source
 
 ```sh
-git clone --recurse-submodules https://github.com/marcalc/vsoup.git
+git clone https://github.com/marcalc/vsoup.git
 cd vsoup
 make test
 ```
 
-The `lexbor_*.c` unity build files are committed to the repo, so from-source users can build immediately after cloning.
-
-### Updating lexbor
-
-After updating the lexbor submodule, regenerate the unity build files:
-
-```sh
-make generate
-```
+[Lexbor](https://lexbor.com) v2.6.0 is vendored and compiled directly by V — no CMake or separate build step required.
 
 ## API Reference
 
@@ -236,7 +224,7 @@ vsoup
 ├── node_type.v     # NodeType enum
 ├── connection.v    # HTTP client
 ├── c_shims.c/h     # Compatibility shims for lexbor v2.6.0
-└── lexbor/         # Vendored lexbor v2.6.0 (git submodule)
+└── lexbor/         # Vendored lexbor v2.6.0 source
 ```
 
 **Key design decisions:**
