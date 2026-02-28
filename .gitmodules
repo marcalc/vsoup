@@ -1,0 +1,4 @@
+[submodule "lexbor"]
+	path = lexbor
+	url = https://github.com/lexbor/lexbor.git
+	branch = v2.6.0

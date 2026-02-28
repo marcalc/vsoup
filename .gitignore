@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+lexbor/build/
+*.o
+*.a
+*.so
+*.dylib
+benchmarks/*.class
+benchmarks/*.jar
+jsoup/target/
+.vscode/
+.idea/
+*.tmp
+.claude
