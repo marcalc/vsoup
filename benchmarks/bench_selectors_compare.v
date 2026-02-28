@@ -15,8 +15,8 @@ import time
 // Re-declare C types and functions needed for raw benchmark
 // (the vsoup module declares them privately)
 
+#flag -DLEXBOR_STATIC
 #flag -I @VMODROOT/lexbor/source
-#flag @VMODROOT/lexbor/build/liblexbor_static.a
 #include "lexbor/html/html.h"
 #include "lexbor/css/css.h"
 #include "lexbor/selectors/selectors.h"
