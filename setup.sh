@@ -3,6 +3,7 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 LEXBOR_DIR="$SCRIPT_DIR/lexbor"
+LEXBOR_TAG="v2.6.0"
 
 # Check prerequisites
 for cmd in cmake make cc; do
@@ -12,16 +13,20 @@ for cmd in cmake make cc; do
     fi
 done
 
-# Initialize submodule if needed
-if [ -f "$SCRIPT_DIR/.gitmodules" ] && [ ! -f "$LEXBOR_DIR/CMakeLists.txt" ]; then
-    echo "Initializing lexbor submodule..."
-    cd "$SCRIPT_DIR"
-    git submodule update --init
+# Get lexbor source if needed
+if [ ! -f "$LEXBOR_DIR/CMakeLists.txt" ]; then
+    if [ -f "$SCRIPT_DIR/.gitmodules" ]; then
+        echo "Initializing lexbor submodule..."
+        cd "$SCRIPT_DIR"
+        git submodule update --init
+    else
+        echo "Cloning lexbor ${LEXBOR_TAG}..."
+        git clone --depth 1 --branch "$LEXBOR_TAG" https://github.com/nicktrandafil/lexbor.git "$LEXBOR_DIR"
+    fi
 fi
 
-if [ ! -d "$LEXBOR_DIR" ]; then
-    echo "Error: lexbor directory not found at $LEXBOR_DIR"
-    echo "Run: git submodule update --init"
+if [ ! -f "$LEXBOR_DIR/CMakeLists.txt" ]; then
+    echo "Error: lexbor source not found at $LEXBOR_DIR"
     exit 1
 fi
 

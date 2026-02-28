@@ -40,22 +40,24 @@ println(doc.html())
 
 ## Installation
 
+### Via VPM
+
 ```sh
 v install marcalc.vsoup
+cd ~/.vmodules/$USER/vsoup
+bash setup.sh
 ```
 
-### Prerequisites
+The setup script will automatically clone [Lexbor](https://lexbor.com) v2.6.0 and build it as a static library. This only needs to be done once.
 
-- [V compiler](https://vlang.io)
-- C compiler (cc/gcc/clang)
-- CMake
+**Prerequisites:** C compiler (cc/gcc/clang) and CMake.
 
-### Building from source
+### From source
 
 ```sh
 git clone --recurse-submodules https://github.com/marcalc/vsoup.git
 cd vsoup
-make setup  # builds lexbor static library
+make setup
 ```
 
 ## API Reference
