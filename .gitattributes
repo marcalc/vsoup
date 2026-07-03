@@ -1,0 +1,3 @@
+# Lexbor is a vendored C dependency; exclude it from language stats so the
+# repo is correctly detected as a V project.
+lexbor/** linguist-vendored
